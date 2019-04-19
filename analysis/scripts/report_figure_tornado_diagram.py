@@ -6,8 +6,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-# from matplotlib.collections import PathCollection
-# from matplotlib.patches import Rectangle
+
 
 psa_cost_eff_data = pd.read_csv("../output/report_table_psa_results.csv",
                                 sep='\s*,\s*', engine="python")

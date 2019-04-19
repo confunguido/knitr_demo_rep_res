@@ -21,7 +21,7 @@
 
 <<Global, include=FALSE>>=
 opts_chunk$set(fig.align='center')
-packagesUsed = c("tidyverse", "grDevices", "repmis")
+packagesUsed = c("tidyverse", "grDevices", "repmis", "xtable")
 repmis::LoadandCite(packagesUsed, file = "Packages.bib", install = FALSE)
 @
 
@@ -87,7 +87,22 @@ Out cost-effectiveness analysis suggests that the intervention would be cost-eff
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=.7\linewidth]{../analysis/figures/report_figure_ICER.jpeg}
+<<echo=FALSE, message = FALSE, warning=FALSE, out.width='9.5 cm'>>=
+icer_data = read_csv("../analysis/output/report_table_cost_effectiveness_QALY.csv")
+plot(icer_data$vaccine_cost, icer_data$BothHigh, type = "l", col = "black",
+     main = "Cost-effectiveness", ylab = "ICER", xlab = "Vaccine (USD)",
+     ylim = c(0,3*icer_data$gdp[1]))
+lines(icer_data$vaccine_cost, icer_data$LowSensitivity, type = "l", col = "red")
+lines(icer_data$vaccine_cost, icer_data$LowSpecificity, type = "l", col = "blue")
+abline(h = icer_data$gdp[1], col = "black")
+abline(h = 3*icer_data$gdp[1], col = "black")
+abline(h = 0, col = "black")
+legend(x = 0, y = 3* 0.9 * icer_data$gdp[1],
+       legend = c("Baseline",
+                  "Low Sensitivity",
+                  "Low Specificity"),
+       col = c("black","red","blue"), lty = c(1,1))
+@
   \caption{ICER of pre-vaccination screening strategy in Puerto Rico at different cost of vaccination (3 doses per person).}
   \label{fig-ICER}
 \end{figure}
@@ -105,17 +120,16 @@ We varied the baseline value of five parameters of the cost-effectiveness analys
 %% ========================================================
 %% automatically insert results from R in here -----------
 %% ========================================================
-\begin{table}[ht]
-  \centering
-  \input{./table_ICER_psa.tex}
-  \caption{Sensitivity analysis of cost-effectiveness} 
-  \label{table-tornado}
-\end{table}
+<<results='asis', echo=FALSE>>=
+  library(xtable)
+table_data = read.csv('../analysis/output/report_table_psa_results.csv')
+xtable(table_data,label="table-tornado", caption = "Sensitivity analysis of cost-effectiveness", digits = 2)
+
+@
 
 \section{Discussion}
 Assuming a moderate transmission intensity in Puerto Rico, we found that this intervention could be beneficial from the public health and individual perspective, conditioned to moderate values of sensitivity and high values of specificity. Compared to our previous simulation analysis for the Philippines and Brazil \cite{Espana2019Biorxiv}, the main differences of this analysis are the costs of treatment of dengue fever and severe dengue cases, which are based on studies from 2010. More updated estimates of this type of costs would refine the estimates of cost-effectiveness of p re-vaccination screening with CYD-TDV in Puerto Rico. 
 
  \bibliographystyle{vancouver}
- %% automatically copy updated .bib file from Dropbox/Literature directory
  \bibliography{Guido_Postdoc_Literature}
 \end{document}

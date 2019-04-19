@@ -133,7 +133,16 @@ Out cost-effectiveness analysis suggests that the intervention would be cost-eff
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=.7\linewidth]{../analysis/figures/report_figure_ICER.jpeg}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+
+{\centering \includegraphics[width=9.5 cm]{figure/unnamed-chunk-1-1} 
+
+}
+
+
+
+\end{knitrout}
   \caption{ICER of pre-vaccination screening strategy in Puerto Rico at different cost of vaccination (3 doses per person).}
   \label{fig-ICER}
 \end{figure}
@@ -151,17 +160,29 @@ We varied the baseline value of five parameters of the cost-effectiveness analys
 %% ========================================================
 %% automatically insert results from R in here -----------
 %% ========================================================
+% latex table generated in R 3.5.1 by xtable 1.8-3 package
+% Fri Apr 19 18:39:06 2019
 \begin{table}[ht]
-  \centering
-  \input{./table_ICER_psa.tex}
-  \caption{Sensitivity analysis of cost-effectiveness} 
-  \label{table-tornado}
+\centering
+\begin{tabular}{rlrrrrrr}
+  \hline
+ & parameter & min & max & ICER\_min & ICER\_max & ICER\_default & GDP \\ 
+  \hline
+1 & Sensitivity & 0.50 & 1.00 & 32622.40 & 18452.13 & 22012.70 & 31364.60 \\ 
+  2 & SP9 & 0.25 & 0.75 & 69042.20 & 9161.02 & 22012.70 & 31364.60 \\ 
+  3 & Specificity & 0.50 & 1.00 & 131214.40 & 17682.60 & 22012.70 & 31364.60 \\ 
+  4 & test\_cost & 1.00 & 20.00 & 13438.97 & 31539.07 & 22012.70 & 31364.60 \\ 
+  5 & vax\_cost & 10.00 & 300.00 & -2279.54 & 115132.94 & 22012.70 & 31364.60 \\ 
+   \hline
+\end{tabular}
+\caption{Sensitivity analysis of cost-effectiveness} 
+\label{table-tornado}
 \end{table}
+
 
 \section{Discussion}
 Assuming a moderate transmission intensity in Puerto Rico, we found that this intervention could be beneficial from the public health and individual perspective, conditioned to moderate values of sensitivity and high values of specificity. Compared to our previous simulation analysis for the Philippines and Brazil \cite{Espana2019Biorxiv}, the main differences of this analysis are the costs of treatment of dengue fever and severe dengue cases, which are based on studies from 2010. More updated estimates of this type of costs would refine the estimates of cost-effectiveness of p re-vaccination screening with CYD-TDV in Puerto Rico. 
 
  \bibliographystyle{vancouver}
- %% automatically copy updated .bib file from Dropbox/Literature directory
  \bibliography{Guido_Postdoc_Literature}
 \end{document}
