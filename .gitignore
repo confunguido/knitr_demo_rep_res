@@ -1,0 +1,14 @@
+**/*~
+**/*.aux
+**/*.bbl
+**/*.log
+**/*.out
+**/*.bib
+**/*.Rhistory
+**/auto/*
+**/_*_.*
+**/*.fmt
+**/*.blg
+**/*.Rout
+**/*.RData
+**/*.gz
