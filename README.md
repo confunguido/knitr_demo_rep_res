@@ -12,7 +12,7 @@ latex_demo-o- README.md
 
 Scripts should be run within the scripts directory, not outside of it...for some reason
 
-# Tie up all files using knitr and rmarkdown
+# Tie up all files using knitr 
 
 
 
